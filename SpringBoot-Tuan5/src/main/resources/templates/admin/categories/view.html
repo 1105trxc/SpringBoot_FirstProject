@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout-admin.html}">
+<section class="row" layout:fragment="content">
+    <div class="col-6 offset-3 mt-4">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h3>Category Detail</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>ID:</strong> <span th:text="${category.categoryId}"></span></p>
+                <p><strong>Name:</strong> <span th:text="${category.categoryName}"></span></p>
+                <p><strong>Images:</strong> <span th:text="${category.images}"></span></p>
+            </div>
+            <div class="card-footer text-end">
+                <a th:href="@{/admin/categories/searchpaginated}" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

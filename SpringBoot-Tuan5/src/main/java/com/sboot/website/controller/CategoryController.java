@@ -110,7 +110,7 @@ public class CategoryController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
 
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("name"));
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryName"));
         Page<Category> resultPage;
 
         if (StringUtils.hasText(categoryName)) {
