@@ -88,22 +88,22 @@ public class CategoryController {
 
     // Tìm kiếm category theo tên (không phân trang)
     @RequestMapping("/search")
-    public String search(ModelMap model, @RequestParam(name = "name", required = false) String name) {
+    public String search(ModelMap model, @RequestParam(name = "categoryName", required = false) String categoryName) {
         List<Category> list;
-        if (StringUtils.hasText(name)) {
-            list = categoryService.findByCategoryNameContaining(name);
+        if (StringUtils.hasText(categoryName)) {
+            list = categoryService.findByCategoryNameContaining(categoryName);
         } else {
             list = categoryService.findAll();
         }
         model.addAttribute("categories", list);
-        model.addAttribute("name", name);
+        model.addAttribute("name", categoryName);
         return "admin/categories/search";
     }
 
     // Tìm kiếm category theo tên (có phân trang)
     @RequestMapping("/searchpaginated")
     public String searchPaginated(ModelMap model,
-                                  @RequestParam(name = "name", required = false) String name,
+                                  @RequestParam(name = "categoryName", required = false) String categoryName,
                                   @RequestParam(name = "page", required = false) Optional<Integer> page,
                                   @RequestParam(name = "size", required = false) Optional<Integer> size) {
 
@@ -113,9 +113,9 @@ public class CategoryController {
         Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("name"));
         Page<Category> resultPage;
 
-        if (StringUtils.hasText(name)) {
-            resultPage = categoryService.findByCategoryNameContaining(name, pageable);
-            model.addAttribute("name", name);
+        if (StringUtils.hasText(categoryName)) {
+            resultPage = categoryService.findByCategoryNameContaining(categoryName, pageable);
+            model.addAttribute("name", categoryName);
         } else {
             resultPage = categoryService.findAll(pageable);
         }

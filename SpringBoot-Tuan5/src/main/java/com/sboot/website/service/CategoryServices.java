@@ -30,10 +30,10 @@ public interface CategoryServices {
     long count();
 
     // Tìm theo tên chứa chuỗi (không phân trang)
-    List<Category> findByCategoryNameContaining(String name);
+    List<Category> findByCategoryNameContaining(String categoryName);
 
     // Tìm theo tên có phân trang
-    Page<Category> findByCategoryNameContaining(String name, Pageable pageable);
+    Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable);
 
     // Tìm theo Example
     <S extends Category> Optional<S> findOne(Example<S> example);

@@ -34,6 +34,9 @@ public class Category implements Serializable {
     @Column(columnDefinition = "NVARCHAR(MAX)")
     private String images;
 
+    @Column(columnDefinition = "NVARCHAR(500)")
+    private String description;
+
     // Trường dùng cho Thymeleaf để phân biệt edit/add, không lưu DB
     @Transient
     private boolean isEdit = false;
@@ -41,6 +44,12 @@ public class Category implements Serializable {
     // Thêm getter/setter cho isEdit nếu không dùng Lombok
     public boolean getIsEdit() { return isEdit; }
     public void setIsEdit(boolean isEdit) { this.isEdit = isEdit; }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     // Nếu muốn sử dụng tên categoryId cho template/controller
     @Transient

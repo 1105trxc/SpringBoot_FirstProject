@@ -49,13 +49,13 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public List<Category> findByCategoryNameContaining(String name) {
-        return categoryRepository.findByCategoryNameContaining(name);
+    public List<Category> findByCategoryNameContaining(String categoryName) {
+        return categoryRepository.findByCategoryNameContaining(categoryName);
     }
 
     @Override
-    public Page<Category> findByCategoryNameContaining(String name, Pageable pageable) {
-        return categoryRepository.findByCategoryNameContaining(name, pageable);
+    public Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable) {
+        return categoryRepository.findByCategoryNameContaining(categoryName, pageable);
     }
 
     @Override

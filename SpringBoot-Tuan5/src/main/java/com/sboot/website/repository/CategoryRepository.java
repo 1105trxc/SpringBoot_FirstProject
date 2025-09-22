@@ -19,13 +19,13 @@ public interface CategoryRepository extends JpaRepository<Category, Integer > {
  //Tìm Kiếm theo nội dung tên
 
 
- List<Category> findByCategoryNameContaining(String name);
+ List<Category> findByCategoryNameContaining(String categoryName);
 
 
  //Tìm kiếm và Phân trang
 
 
- Page<Category> findByCategoryNameContaining(String name,Pageable pageable);
+ Page<Category> findByCategoryNameContaining(String categoryName,Pageable pageable);
 
 
 }
