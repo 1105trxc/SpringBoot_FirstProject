@@ -1,3 +1,7 @@
 <header class="bg-primary text-white p-3 mb-4 rounded">
-    <h1 class="mb-0">Header Admin</h1>
+	<h1 class="mb-0">Header Admin</h1>
+	<form th:action="@{/logout}" method="post" class="d-inline">
+		<button type="submit" class="btn btn-danger float-end ms-2">Đăng
+			xuất</button>
+	</form>
 </header>
