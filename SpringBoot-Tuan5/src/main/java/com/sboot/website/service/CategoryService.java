@@ -11,17 +11,17 @@ import org.springframework.data.domain.Sort;
 import com.sboot.website.entity.Category;
 
 public interface CategoryService {
-void delete(Category entity);
-void deleteById(Long id);
-long count();
-<S extends Category> Optional<S> findOne(Example<S> example);
-Optional<Category> findById(Long id);
-List<Category> findAllById(Iterable<Long> ids);
-List<Category> findAll(Sort sort);
-Page<Category> findAll(Pageable pageable);
-List<Category> findAll();
-Optional<Category> findByCategoryName(String name);
-<S extends Category> S save(S entity);
-Page<Category> findByCategoryNameContaining(String name, Pageable pageable);
-List<Category> findByCategoryNameContaining(String name);
+    void delete(Category entity);
+    void deleteById(Integer id);
+    long count();
+    <S extends Category> Optional<S> findOne(Example<S> example);
+    Optional<Category> findById(Integer id);
+    List<Category> findAllById(Iterable<Integer> ids);
+    List<Category> findAll(Sort sort);
+    Page<Category> findAll(Pageable pageable);
+    List<Category> findAll();
+    Optional<Category> findByCategoryName(String name);
+    <S extends Category> S save(S entity);
+    Page<Category> findByCategoryNameContaining(String name, Pageable pageable);
+    List<Category> findByCategoryNameContaining(String name);
 }

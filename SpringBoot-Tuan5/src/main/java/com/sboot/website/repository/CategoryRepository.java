@@ -1,6 +1,7 @@
 package com.sboot.website.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,21 +12,14 @@ import org.springframework.stereotype.Repository;
 import com.sboot.website.entity.Category;
 
 @Repository
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
+    // Tìm kiếm chính xác theo tên
+    Optional<Category> findByCategoryName(String categoryName);
 
-public interface CategoryRepository extends JpaRepository<Category, Integer > {
+    // Tìm Kiếm theo nội dung tên
+    List<Category> findByCategoryNameContaining(String categoryName);
 
-
- //Tìm Kiếm theo nội dung tên
-
-
- List<Category> findByCategoryNameContaining(String categoryName);
-
-
- //Tìm kiếm và Phân trang
-
-
- Page<Category> findByCategoryNameContaining(String categoryName,Pageable pageable);
-
-
+    // Tìm kiếm và Phân trang
+    Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable);
 }

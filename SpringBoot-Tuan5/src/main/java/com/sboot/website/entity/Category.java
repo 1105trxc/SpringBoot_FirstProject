@@ -26,7 +26,7 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id; // đổi từ int -> Integer để khớp Repository
 
     @Column(name="categoryName", columnDefinition = "NVARCHAR(255)")
     private String categoryName;
@@ -41,22 +41,18 @@ public class Category implements Serializable {
     @Transient
     private boolean isEdit = false;
 
-    // Thêm getter/setter cho isEdit nếu không dùng Lombok
+    // Giữ các getter/setter thủ công nếu bạn đang dùng ngoài Lombok
     public boolean getIsEdit() { return isEdit; }
     public void setIsEdit(boolean isEdit) { this.isEdit = isEdit; }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
     // Nếu muốn sử dụng tên categoryId cho template/controller
     @Transient
-    public int getCategoryId() {
+    public Integer getCategoryId() {
         return id;
     }
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.id = categoryId;
     }
 }

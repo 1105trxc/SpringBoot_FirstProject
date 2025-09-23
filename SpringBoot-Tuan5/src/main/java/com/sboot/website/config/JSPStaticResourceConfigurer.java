@@ -18,28 +18,33 @@ public class JSPStaticResourceConfigurer implements LifecycleListener {
         this.context = context;
     }
 
-    private final String subPath = "/META-INF";
-
     @Override
     public void lifecycleEvent(LifecycleEvent event) {
         if (!event.getType().equals(Lifecycle.CONFIGURE_START_EVENT)) {
             return;
         }
 
-        final URL finalLocation = getUrl();
+        final URL base = getUrl();
+        final String subPath = ResourceUtils.isFileURL(base) ? "/" : "/META-INF";
 
-        this.context.getResources().createWebResourceSet(
-                WebResourceRoot.ResourceSetType.RESOURCE_JAR,
-                "/",
-                finalLocation,
-                subPath
-        );
+        try {
+            this.context.getResources().createWebResourceSet(
+                    WebResourceRoot.ResourceSetType.RESOURCE_JAR,
+                    "/",
+                    base,
+                    subPath
+            );
+        } catch (IllegalArgumentException | IllegalStateException ex) {
+            // Không chặn khởi động Tomcat nếu resource set không hợp lệ ở môi trường hiện tại
+            System.out.println("Skip adding WebResourceSet base=" + base + " subPath=" + subPath + " because: " + ex.getMessage());
+        }
     }
 
     private URL getUrl() {
         final URL location = this.getClass().getProtectionDomain().getCodeSource().getLocation();
 
         if (ResourceUtils.isFileURL(location)) {
+            // Chạy từ target/classes
             return location;
         } else if (ResourceUtils.isJarURL(location)) {
             try {
