@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.sboot.website.entity.Category;
@@ -14,7 +15,7 @@ import com.sboot.website.repository.CategoryRepository;
 
 //khai báo service
 @Service
-public class CategoryServiceImpl implements ICategoryService{
+public class CategoryServiceImpl implements CategoryService{
 @Autowired
 CategoryRepository categoryRepository;
 //source -> Generate Constructor using Field, xóa super()
